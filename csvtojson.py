@@ -6,7 +6,8 @@ for url in urls:
     r = requests.get(url)
 
     arquivo = r.text.splitlines()
-    fl = arquivo[0] # cabeçalho do arquivo csv
+    fl = arquivo.pop(0) # cabeçalho do arquivo csv
+
     namefile = url.split('/')[-1].split('.csv')[0] # retorna o nome do arquivo
     
     with open(f'{namefile}.json', 'w', encoding='utf-8') as jsonfile:
